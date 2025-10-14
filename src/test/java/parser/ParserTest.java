@@ -28,4 +28,16 @@ public class ParserTest {
 		Parser parser = new Parser("");
 		assertThat(parser.getExpression()).isEqualTo("0");
 	}
+
+	@Test
+	void 계산식_숫자_추출_테스트() {
+		Parser parser = new Parser("1,2:3");
+		assertThat(parser.getNumbers()).isEqualTo(new int[]{1, 2, 3});
+	}
+
+	@Test
+	void 계산식_구분자_추출_테스트() {
+		Parser parser = new Parser("1,2:3");
+		assertThat(parser.getNumbers()).isEqualTo(new String[]{",", ":"});
+	}
 }
