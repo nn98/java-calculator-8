@@ -8,24 +8,19 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class IO {
-	private final BufferedReader reader;
-	private final PrintWriter writer;
-	public IO() {
-		this(new InputStreamReader(System.in), new OutputStreamWriter(System.out));
+	private final PrintWriter writer = new PrintWriter(new OutputStreamWriter(System.out), true);
+
+	public String readLine() {
+		return Console.readLine();
 	}
-	public IO(Reader reader, Writer writer) {
-		this.reader = new BufferedReader(reader);
-		this.writer = new PrintWriter(writer, true);
+	public String readLine(String prompt) {
+		writer.println(prompt);
+		return Console.readLine();
 	}
-	public String readLine() throws IOException {
-		return this.reader.readLine();
-	}
-	public String readLine(String prompt) throws IOException {
-		this.writer.println(prompt);
-		return this.reader.readLine();
-	}
-	public void writeLine(String prompt) {
-		this.writer.println(prompt);
+	public void writeLine(String line) {
+		writer.println(line);
 	}
 }

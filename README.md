@@ -150,6 +150,9 @@
   - 싱글톤 형식의 Console 이 `mission-utils-1.2.0.jar`에 생성되어 제공된다
   - public 으로 `readLine()`, `close()` 메소드가 있다
     - 정상 종료 / 예외 발생으로 인한 종료 시 `close()` 를 실행해야
+- `NsTest` 도 존재한다
+  - @BeforeEach / @AfterEach 있는거보니 입출력을 다르게 처리하는거같은데
+  - 검색해보니 입출력을 묶어서 처리? 하는 거 같으니 기존 테스트를 수정해야
 
 ---
 
