@@ -57,6 +57,82 @@
 - [ ] `class Application`
 - [ ] 프로그램 실행 - `main()`
 
+## `🧪 테스트`
+## 🔎 전역
+- [X] Test Driven Development 도입 시도
+## ✅입력ㆍ출력
+- [ ] `class IOTest`
+- [ ] 안내문 출력 - `readLine()` ➡️ `단위 테스트`
+  - input : X 
+  - parameter : X
+  - output : `덧셈할 문자열을 입력해 주세요.`
+  - expected : X
+- [ ] 사용자 입력 - `readLine()` ➡️ `단위 테스트`
+  - input : `1,2:3`
+  - parameter : X
+  - output : `덧셈할 문자열을 입력해 주세요.`
+  - expected : `"1,2:3"`
+- [ ] 결과 출력 - `writeResult()` ➡️ `단위 테스트`
+  - input : X
+  - parameter : `6`
+  - output : `결과 : 6`
+  - expected : void 
+## ✅파싱ㆍ예외
+- [ ] `class ParserTest`
+- [ ] 사용자 입력 파싱 - `parseLine()` ➡️ `단위 테스트`
+  - input : X
+  - parameter : `"1,2:3"`
+  - output : X
+  - expected : `Data(numbers: [1, 2, 3], separators: [",", ":"])`
+- [ ] `❗이슈 1` 공백 입력 처리 - `checkBlank()` ➡️ `단위 테스트`
+  - input : X
+  - parameter : `""`
+  - output : X
+  - expected : `"0"`
+- [ ] 커스텀 구분자 식별 - `getCustom()` ➡️ `단위 테스트`
+  - input : X
+  - parameter : `"//;\n1;2;3"`
+  - output : X
+  - expected : `";"`
+- [ ] 구분자 기준 분할 - `getData()` ➡️ `단위 테스트`
+  - input : X
+  - parameter : `"1,2:3"`
+  - output : X
+  - expected : `Data(numbers: [1, 2, 3], separators: [",", ":"])`
+- [ ] 숫자 취합 - `getNumbers()` ➡️ `단위 테스트`
+  - input : X
+  - parameter : `"1,2:3"`
+  - output : X
+  - expected : `int[1, 2, 3]`
+- [ ] 구분자 취합 - `getSeparators()` ➡️ `단위 테스트`
+  - input : X
+  - parameter : `"1,2:3"`
+  - output : X
+  - expected : `String[",", ":"]`
+- [ ] ~~결과 객체 리턴 - `getData()` 상동~~
+  - [ ] `class DataTest`
+    - numbers
+    - separators
+- [ ] `❗이슈 2` 모든 `파싱` 과정에서 - `checkLine()` ➡️ `단위 테스트`
+  - input : X
+  - parameter : `"1,!2:3"`
+  - output : X
+  - expected : throw`IllegalArgumentException`
+## ✅수식 연산
+- [ ] `class CalculatorTest`
+- [ ] `❗이슈 3` `Data` 객체 매개변수로 받아 수식 계산, 결과값 리턴 - `calculate()` ➡️ `단위 테스트`
+  - input : X
+  - parameter : `Data(numbers: [1, 2, 3], separators: [",", ":"])`
+  - output : X
+  - expected : `6`
+## ✅애플리케이션 실행
+- [ ] `class ApplicationTest`
+- [ ] 프로그램 실행 - `main()` ➡️ `통합 테스트`
+  - input : `"1,2:3"`
+  - parameter : 없 진 않고 `String[] args`
+  - output : `덧셈할 문자열을 입력해 주세요.` / `결과 : 6`
+  - expected : `void`
+
 ---
 
 # 🔔 작성 중 확인한 / 배운 부분
