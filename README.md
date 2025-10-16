@@ -1,5 +1,7 @@
 # ✅ 체크리스트 
+
 ## `🛠️ 기능`
+
 ## ❗입력ㆍ출력
 - [ ] `camp.nextstep.edu.missionutils`에서 제공하는 `Console` API를 사용하여 구현해야 한다
 - [ ] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
@@ -22,10 +24,34 @@
 ## ❗추가 구현
 - [ ] ~~계산기답게 반복 실행하기~~
 - 입출력 양식 준수
-# 🧪 테스트
-- [X] TDD? 간단한 기능인 겸 TDD해보기
-  - [ ] IO 구현은 기능 ➡️ 테스트
-  - [X] 파서 구현 TDD
+
+## `🔨구현`
+
+## ✅입력ㆍ출력
+- [ ] `class IO`
+- [ ] 안내문 출력
+- [ ] 사용자 입력
+- [ ] 결과 출력
+## ✅파싱ㆍ예외
+- [ ] `class Parser`
+- [ ] 사용자 입력 파싱
+- [ ] 커스텀 구분자 식별
+- [ ] 구분자 기분 분할
+- [ ] 숫자 취합
+- [ ] 구분자 취합
+- [ ] 결과 객체 리턴
+  - [ ] `class Data`
+    - numbers
+    - separators
+- [ ] ❗모든 `파싱` 과정에서 
+  - 커스텀 접두ㆍ접미사
+  - 커스텀 구분자
+  - 숫자
+  - 구분자  
+- 외의 문자가 있을 경우 예외 `IllegalArgumentException` throw
+## ✅수식 연산
+- [ ] `class Calculator`
+- [ ] `Data` 객체 매개변수로 받아 수식 계산 - 결과값 리턴
 
 ---
 
