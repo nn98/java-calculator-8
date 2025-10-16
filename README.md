@@ -3,8 +3,8 @@
 ## `🛠️ 기능`
 
 ## ❗입력ㆍ출력
-- [ ] `camp.nextstep.edu.missionutils`에서 제공하는 `Console` API를 사용하여 구현해야 한다
-- [ ] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+- [X] `camp.nextstep.edu.missionutils`에서 제공하는 `Console` API를 사용하여 구현해야 한다
+- [X] 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 ## ❗파싱ㆍ예외
 - [ ] 사용자가 입력하는 값을 파싱한다
   - [ ] `구분자` 로 숫자를 구분한다.
@@ -28,10 +28,10 @@
 ## `🔨구현`
 
 ## ✅입력ㆍ출력
-- [ ] `class IO`
-- [ ] 안내문 출력 - `readLine()`
-- [ ] 사용자 입력 - `readLine()`
-- [ ] 결과 출력 - `writeResult()`
+- [X] `class IO`
+- [X] 안내문 출력 - `readLine()`
+- [X] 사용자 입력 - `readLine()`
+- [X] 결과 출력 - `writeLine()`
 ## ✅파싱ㆍ예외
 - [ ] `class Parser`
 - [ ] 사용자 입력 파싱 - `parseLine()`
@@ -72,7 +72,7 @@
   - parameter : X
   - output : `덧셈할 문자열을 입력해 주세요.`
   - expected : `"1,2:3"`
-- [ ] 결과 출력 - `writeResult()` ➡️ `단위 테스트`
+- [ ] 결과 출력 - `writeLine()` ➡️ `단위 테스트`
   - input : X
   - parameter : `6`
   - output : `결과 : 6`
