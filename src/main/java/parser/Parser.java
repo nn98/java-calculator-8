@@ -35,6 +35,10 @@ public class Parser {
 		return null;
 	}
 
+	public Data getData() {
+		return null;
+	}
+
 	public int[] getNumbers() {
 		return new int[0];
 	}
