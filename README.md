@@ -34,16 +34,22 @@
 - [X] 결과 출력 - `writeLine()`
 ## ✅파싱ㆍ예외
 - [ ] `class Parser`
+- [X] 사용자 입력 전처리 - `preprocessingLine()`
+  - [X] `❗이슈 1` 공백 입력 처리 - `checkBlank()`
+  - [X] 커스텀 구분자 식별 및 처리 - `getCustom()`
+  - [X] 커스텀 구분자 제외 계산식 처리 - `getExpression()`
+  - [X] 전처리 결과 - `class Line`
+    - `String` custom
+    - `String` expression
 - [ ] 사용자 입력 파싱 - `parseLine()`
-- [ ] `❗이슈 1` 공백 입력 처리 - `checkBlank()`
-- [ ] 커스텀 구분자 식별 - `getCustom()`
-- [ ] 구분자 기분 분할 - `getData()`
-- [ ] 숫자 취합 - `getNumbers()`
-- [ ] 구분자 취합 - `getSeparators()`
+  - [ ] 파싱 결과 - `class Data`
+    - `String[]` numbers
+    - `String[]` separators
+  - [ ] 구분자 기준 분할 - `getData()`
+  - [ ] 숫자 취합 - `getNumbers()`
+  - [ ] 구분자 취합 - `getSeparators()`
+- [ ] 전처리 결과 객체 리턴(테스트) - `getLine()`
 - [ ] 결과 객체 리턴 - `getData()`
-  - [ ] `class Data`
-    - numbers
-    - separators
 - [ ] `❗이슈 2` 모든 `파싱` 과정에서 - `checkLine()` 
   - 커스텀 접두ㆍ접미사
   - 커스텀 구분자
@@ -145,7 +151,7 @@
 - 입출력은 별도 클래스가 처리
   - 테스트 용이성을 위해 주입 생성자 구현
 
-# 🚨 작성중 빼먹은 / 실수한 부분
+# 🚨 작성 중 빼먹은 / 실수한 부분
 - 입출력 라이브러리가 지정되어있다
   - 싱글톤 형식의 Console 이 `mission-utils-1.2.0.jar`에 생성되어 제공된다
   - public 으로 `readLine()`, `close()` 메소드가 있다
@@ -154,7 +160,7 @@
   - @BeforeEach / @AfterEach 있는거보니 입출력을 다르게 처리하는거같은데
   - 검색해보니 입출력을 묶어서 처리? 하는 거 같으니 기존 테스트를 수정해야
 
-# 💡 구현중 생각한 부분
+# 💡 구현 중 생각한 부분
 - 문자열 파싱과 그 결과를 가지고 연산하는 구조.
 - 원본 문자열을 모래사장, 결과를 모래성이라 비유.
 - 바닥을 끌어모아 쌓아올릴 수도, 

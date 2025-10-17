@@ -14,11 +14,11 @@ public class Parser {
 	private final Data parsedData;
 	public Parser(String originalLine) {
 		this.originalLine = originalLine;
-		this.parsedLine = getLine(this.originalLine);
+		this.parsedLine = preprocessingLine(this.originalLine);
 		parsedData = parseLine(this.parsedLine);
 	}
 
-	private Line getLine(String originalLine) {
+	private Line preprocessingLine(String originalLine) {
 		String checkedLine = checkBlank(originalLine);
 		String custom = getCustom(checkedLine);
 		String expression = getExpression(custom, checkedLine);
