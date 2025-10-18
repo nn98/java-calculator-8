@@ -1,9 +1,10 @@
 package calculator;
 
-import parser.Parser;
+import preprocessor.Preprocessor;
 
 public class Application {
     public static void main(String[] args) {
-        Parser sp = new Parser("//;;\n1;2;3");
+        Preprocessor preprocessor = new Preprocessor("//;\n1;2;3");
+        System.out.println(preprocessor.getProcessedLine().getCustom());
     }
 }
