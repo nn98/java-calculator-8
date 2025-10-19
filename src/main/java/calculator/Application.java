@@ -15,14 +15,14 @@ public class Application {
             int result = calculate(userInput);
             printResult(String.valueOf(result));
         } catch (IllegalArgumentException exception) {
-            printResult(Messages.error);
+            printResult(Messages.error + ": " + exception.getMessage());
             throw new IllegalArgumentException();
         }
     }
 
     private static String userInput() {
         String userInput = io.readLine(Messages.notice);
-        if (userInput.length() > 2 && userInput.substring(0,2).equals("//") && userInput.substring(userInput.length()-2,userInput.length()).equals("\n"))
+        if (userInput.length() > 2 && userInput.substring(0,2).equals("//") && !userInput.contains("\\n"))
             userInput += "\n" + io.readLine();
         return userInput;
     }
