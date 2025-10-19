@@ -1,5 +1,7 @@
 package dto;
 
+import java.util.Objects;
+
 public class Line {
 
 	String custom;
@@ -20,7 +22,15 @@ public class Line {
 
 	@Override
 	public String toString() {
-		return "Line [custom=" + custom + ", \nexpression=" + expression + "]";
+		return "Line [custom=" + custom + ", expression=" + expression + "]";
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Line line = (Line)o;
+		return Objects.equals(custom, line.custom) && Objects.equals(expression, line.expression);
 	}
 
 }
