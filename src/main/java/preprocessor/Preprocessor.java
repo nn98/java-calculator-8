@@ -7,7 +7,7 @@ import dto.Line;
 
 public class Preprocessor {
 
-	private final Pattern pattern = Pattern.compile("^//(.+)\n");
+	private final Pattern pattern = Pattern.compile("^//(.+)(?:\\R|\\\\n)");
 	private final Line processedLine;
 
 	public Preprocessor(String userInput) {
@@ -38,9 +38,9 @@ public class Preprocessor {
 	private String getExpression(String custom, String checkedLine) {
 		String expression = checkedLine;
 		if (custom != null) {
-			String fullCustom = String.format("//%s\n", custom);
-			int sliceIndex = expression.indexOf(fullCustom);
-			expression = expression.substring(sliceIndex + fullCustom.length());
+			Matcher m = pattern.matcher(checkedLine);
+			m.find();
+			expression = checkedLine.substring(m.end());
 		}
 		return expression;
 	}
