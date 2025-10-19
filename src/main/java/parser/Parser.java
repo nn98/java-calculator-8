@@ -1,6 +1,7 @@
 package parser;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,8 +37,10 @@ public class Parser {
 	}
 
 	private Matcher getMatcher(String custom, String expression) {
-		String[] separators = {",", ":", custom};
-		String regex = Arrays.stream(separators).map(Pattern::quote).collect(Collectors.joining("|"));
+		List<String> separators = new java.util.ArrayList<>(List.of(",", ":"));
+		if (custom != null)
+			separators.add(custom);
+		String regex = separators.stream().map(Pattern::quote).collect(Collectors.joining("|"));
 		Pattern pattern = Pattern.compile(regex);
 		return pattern.matcher(expression);
 	}
