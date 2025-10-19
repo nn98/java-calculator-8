@@ -1,5 +1,6 @@
 package calculator;
 
+import camp.nextstep.edu.missionutils.Console;
 import constants.Messages;
 import io.IO;
 import parser.Parser;
@@ -17,6 +18,8 @@ public class Application {
         } catch (IllegalArgumentException exception) {
             printResult(Messages.error + ": " + exception.getMessage());
             throw new IllegalArgumentException();
+        } finally {
+            io.close();
         }
     }
 

@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class IO {
 
-	private final PrintWriter writer = new PrintWriter(new OutputStreamWriter(System.out), true);
+	private static final PrintWriter writer = new PrintWriter(new OutputStreamWriter(System.out), true);
 
 	public String readLine() {
 		return Console.readLine();
@@ -22,4 +22,8 @@ public class IO {
 		writer.println(line);
 	}
 
+	public void close() {
+		Console.close();
+		writer.close();
+	}
 }
