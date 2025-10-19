@@ -11,13 +11,18 @@ public class Application {
 
     public static void main(String[] args) {
         String userInput = userInput();
-        int result = calculate(userInput);
-        printResult(result);
+        try {
+            int result = calculate(userInput);
+            printResult(String.valueOf(result));
+        } catch (IllegalArgumentException exception) {
+            printResult(Messages.error);
+            throw new IllegalArgumentException();
+        }
     }
 
     private static String userInput() {
         String userInput = io.readLine(Messages.notice);
-        if (userInput.length() > 2 && userInput.substring(0,2).equals("//"))
+        if (userInput.length() > 2 && userInput.substring(0,2).equals("//") && userInput.substring(userInput.length()-2,userInput.length()).equals("\n"))
             userInput += "\n" + io.readLine();
         return userInput;
     }
@@ -30,7 +35,7 @@ public class Application {
         return result;
     }
 
-    private static void printResult(int result) {
+    private static void printResult(String result) {
         io.writeLine(Messages.result + result);
     }
 
