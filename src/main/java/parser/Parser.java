@@ -1,35 +1,49 @@
 package parser;
 
+import java.util.Arrays;
+import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
-import dto.Data;
 import dto.Line;
 
 public class Parser {
 
-	private final Data parsedData;
+	private final Stack<String> calculateStack;
 
-	public Parser(Line parsedLine) {
-		parsedData = parseLine(parsedLine);
+	public Parser(Line processedLine) {
+		this.calculateStack = parseLine(processedLine);
 	}
 
-	private Data parseLine(Line parsedLine) {
-		String expression = parsedLine.getExpression();
-		String[] numbers = getNumbers(expression);
-		String[] separators = getSeparators(expression);
-		return new Data(numbers, separators);
+	private Stack<String> parseLine(Line processedLine) {
+		String custom = processedLine.getCustom();
+		String expression = processedLine.getExpression();
+		return getCalculateStack(custom, expression);
 	}
 
-	private String[] getNumbers(String expression) {
-		return new String[0];
+	private Stack<String> getCalculateStack(String custom, String expression) {
+		Matcher matcher = getMatcher(custom, expression);
+		Stack<String> stack = new Stack<>();
+		int index = 0;
+		while (matcher.find()) {
+			stack.push(expression.substring(index, matcher.start()));
+			stack.push(matcher.group(0));
+			index = matcher.end();
+		}
+		stack.push(expression.substring(index));
+		return stack;
 	}
 
-	private String[] getSeparators(String expression) {
-		return new String[0];
+	private Matcher getMatcher(String custom, String expression) {
+		String[] separators = {",", ":", custom};
+		String regex = Arrays.stream(separators).map(Pattern::quote).collect(Collectors.joining("|"));
+		Pattern pattern = Pattern.compile(regex);
+		return pattern.matcher(expression);
 	}
 
-	public Data getData() {
-		return parsedData;
+	public Stack<String> getCalculateStack() {
+		return calculateStack;
 	}
+
 }
