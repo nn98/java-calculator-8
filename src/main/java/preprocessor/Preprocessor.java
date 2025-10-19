@@ -35,14 +35,28 @@ public class Preprocessor {
 		return matcher.group(1);
 	}
 
-	private String getExpression(String custom, String checkedLine) {
+	private String getExpression(String custom, String checkedLine) throws IllegalArgumentException{
 		String expression = checkedLine;
 		if (custom != null) {
 			Matcher m = pattern.matcher(checkedLine);
 			m.find();
 			expression = checkedLine.substring(m.end());
 		}
+		boolean isValid = isValid(custom, expression);
+		if (!isValid)
+			throw new IllegalArgumentException();
 		return expression;
+	}
+
+	private boolean isValid(String custom, String checkedLine) {
+		System.out.println("custom " + custom);
+		System.out.println("checkedLine " + checkedLine);
+		String allowed = (custom == null || custom.isEmpty())
+			? "^[0-9,:]+$"
+			: "^(?:[0-9,:]|" + Pattern.quote(custom) + ")+$";
+		System.out.println("allowed " + allowed);
+		System.out.println("result " + !Pattern.compile(allowed).matcher(checkedLine).matches());
+		return Pattern.compile(allowed).matcher(checkedLine).matches();
 	}
 
 	public Line getProcessedLine() {
