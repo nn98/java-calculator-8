@@ -49,13 +49,9 @@ public class Preprocessor {
 	}
 
 	private boolean isValid(String custom, String checkedLine) {
-		System.out.println("custom " + custom);
-		System.out.println("checkedLine " + checkedLine);
 		String allowed = (custom == null || custom.isEmpty())
 			? "^[0-9,:]+$"
 			: "^(?:[0-9,:]|" + Pattern.quote(custom) + ")+$";
-		System.out.println("allowed " + allowed);
-		System.out.println("result " + !Pattern.compile(allowed).matcher(checkedLine).matches());
 		return Pattern.compile(allowed).matcher(checkedLine).matches();
 	}
 
