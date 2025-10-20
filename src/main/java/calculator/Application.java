@@ -6,7 +6,7 @@ import parser.Parser;
 import preprocessor.Preprocessor;
 
 public class Application {
-
+    
     public static void main(String[] args) {
         String userInput = userInput();
         try {
@@ -17,15 +17,16 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
-
+    
     private static String userInput() {
         System.out.println(Messages.notice);
         String userInput = Console.readLine();
-        if (userInput.length() > 2 && userInput.substring(0,2).equals("//") && !userInput.contains("\\n"))
+        if (userInput.length() > 2 && userInput.startsWith("//") && !userInput.contains("\\n")) {
             userInput += "\n" + Console.readLine();
+        }
         return userInput;
     }
-
+    
     private static int calculate(String userInput) {
         Preprocessor preprocessor = new Preprocessor(userInput);
         Parser parser = new Parser(preprocessor.getProcessedLine());
@@ -33,9 +34,9 @@ public class Application {
         int result = calculator.calculate();
         return result;
     }
-
+    
     private static void printResult(String result) {
         System.out.println(Messages.result + result);
     }
-
+    
 }
