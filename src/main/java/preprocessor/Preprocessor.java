@@ -56,7 +56,9 @@ public class Preprocessor {
         String allowed = (custom == null || custom.isEmpty())
                 ? Values.ALLOW_WITHOUT_CUSTOM
                 : Values.ALLOW_WITH_CUSTOM_PREFIX + Pattern.quote(custom) + Values.ALLOW_WITH_CUSTOM_SUFFIX;
-        return Pattern.compile(allowed).matcher(checkedLine).matches();
+        Pattern pattern = Pattern.compile(allowed);
+        Matcher matcher = pattern.matcher(checkedLine);
+        return matcher.matches();
     }
 
     public Line getProcessedLine() {
