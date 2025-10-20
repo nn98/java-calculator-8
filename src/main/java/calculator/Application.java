@@ -8,14 +8,12 @@ import preprocessor.Preprocessor;
 public class Application {
 
     public static void main(String[] args) {
+        run();
+    }
+
+    private static void run() {
         String userInput = userInput();
-        try {
-            int result = calculate(userInput);
-            printResult(String.valueOf(result));
-        } catch (IllegalArgumentException exception) {
-            printResult(Messages.error);
-            throw new IllegalArgumentException();
-        }
+        execute(userInput);
     }
 
     private static String userInput() {
@@ -27,16 +25,28 @@ public class Application {
         return userInput;
     }
 
-    private static int calculate(String userInput) {
-        Preprocessor preprocessor = new Preprocessor(userInput);
-        Parser parser = new Parser(preprocessor.getProcessedLine());
-        Calculator calculator = new Calculator(parser.getCalculateStack());
-        int result = calculator.calculate();
+    private static void execute(String userInput) {
+        String result = process(userInput);
+        printResult(result);
+    }
+
+    private static String process(String userInput) {
+        String result = "";
+        try {
+            Preprocessor preprocessor = new Preprocessor(userInput);
+            Parser parser = new Parser(preprocessor.getProcessedLine());
+            Calculator calculator = new Calculator(parser.getCalculateStack());
+            int calculationResult = calculator.calculate();
+            result = String.format("%s%d", Messages.result, calculationResult);
+        } catch (IllegalArgumentException exception) {
+            printResult(Messages.error);
+            throw exception;
+        }
         return result;
     }
 
     private static void printResult(String result) {
-        System.out.println(Messages.result + result);
+        System.out.println(result);
     }
 
 }
