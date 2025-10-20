@@ -1,12 +1,13 @@
 package preprocessor;
 
+import constants.Values;
 import dto.Line;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Preprocessor {
 
-    private final Pattern pattern = Pattern.compile("^//(.+)(?:\\R|\\\\n)");
+    private final Pattern pattern = Pattern.compile(Values.REGEX);
     private final Line processedLine;
 
     public Preprocessor(String userInput) {
@@ -23,7 +24,7 @@ public class Preprocessor {
     private String checkBlank(String userInput) {
         userInput = userInput.trim();
         if (userInput.isBlank()) {
-            userInput = "0";
+            userInput = Values.ZERO;
         }
         return userInput;
     }
@@ -53,8 +54,8 @@ public class Preprocessor {
 
     private boolean isValid(String custom, String checkedLine) {
         String allowed = (custom == null || custom.isEmpty())
-                ? "^[0-9,:]+$"
-                : "^(?:[0-9,:]|" + Pattern.quote(custom) + ")+$";
+                ? Values.ALLOW_WITHOUT_CUSTOM
+                : Values.ALLOW_WITH_CUSTOM_PREFIX + Pattern.quote(custom) + Values.ALLOW_WITH_CUSTOM_SUFFIX;
         return Pattern.compile(allowed).matcher(checkedLine).matches();
     }
 
