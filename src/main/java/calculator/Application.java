@@ -2,13 +2,10 @@ package calculator;
 
 import camp.nextstep.edu.missionutils.Console;
 import constants.Messages;
-import io.IO;
 import parser.Parser;
 import preprocessor.Preprocessor;
 
 public class Application {
-
-    public static final IO io = new IO();
 
     public static void main(String[] args) {
         String userInput = userInput();
@@ -16,17 +13,16 @@ public class Application {
             int result = calculate(userInput);
             printResult(String.valueOf(result));
         } catch (IllegalArgumentException exception) {
-            printResult(Messages.error + ": " + exception.getMessage());
+            printResult(Messages.error);
             throw new IllegalArgumentException();
-        } finally {
-            io.close();
         }
     }
 
     private static String userInput() {
-        String userInput = io.readLine(Messages.notice);
+        System.out.println(Messages.notice);
+        String userInput = Console.readLine();
         if (userInput.length() > 2 && userInput.substring(0,2).equals("//") && !userInput.contains("\\n"))
-            userInput += "\n" + io.readLine();
+            userInput += "\n" + Console.readLine();
         return userInput;
     }
 
@@ -39,7 +35,7 @@ public class Application {
     }
 
     private static void printResult(String result) {
-        io.writeLine(Messages.result + result);
+        System.out.println(Messages.result + result);
     }
 
 }

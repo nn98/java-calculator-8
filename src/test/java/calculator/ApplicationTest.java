@@ -18,50 +18,50 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    // @Test
-    // void 일반_구분자_사용() {
-    //     assertSimpleTest(() -> {
-    //         run("1,2:3");
-    //         String out = output();
-    //         assertThat(out).contains("결과 : 6");
-    //     });
-    // }
-    //
-    // @Test
-    // void 공백_입력() {
-    //     assertSimpleTest(() -> {
-    //         run("\n");
-    //         String out = output();
-    //         assertThat(out).contains("결과 : 0");
-    //     });
-    // }
-    //
-    // @Test
-    // void 구분자만_입력() {
-    //     assertSimpleTest(() -> {
-    //         run(":");
-    //         String out = output();
-    //         assertThat(out).contains("결과 : 0");
-    //     });
-    // }
-    //
-    // @Test
-    // void 커스텀_포함_구분자만_입력() {
-    //     assertSimpleTest(() -> {
-    //         run("//;\\n:,;,");
-    //         String out = output();
-    //         assertThat(out).contains("결과 : 0");
-    //     });
-    // }
-    //
-    // @Test
-    // void 구분자_중첩() {
-    //     assertSimpleTest(() -> {
-    //         run(":,:,");
-    //         String out = output();
-    //         assertThat(out).contains("결과 : 0");
-    //     });
-    // }
+    @Test
+    void 일반_구분자_사용() {
+        assertSimpleTest(() -> {
+            run("1,2:3");
+            String out = output();
+            assertThat(out).contains("결과 : 6");
+        });
+    }
+
+    @Test
+    void 공백_입력() {
+        assertSimpleTest(() -> {
+            run("\n");
+            String out = output();
+            assertThat(out).contains("결과 : 0");
+        });
+    }
+
+    @Test
+    void 구분자만_입력() {
+        assertSimpleTest(() -> {
+            run(":");
+            String out = output();
+            assertThat(out).contains("결과 : 0");
+        });
+    }
+
+    @Test
+    void 커스텀_포함_구분자만_입력() {
+        assertSimpleTest(() -> {
+            run("//;\\n:,;,");
+            String out = output();
+            assertThat(out).contains("결과 : 0");
+        });
+    }
+
+    @Test
+    void 구분자_중첩() {
+        assertSimpleTest(() -> {
+            run(":,:,");
+            String out = output();
+            assertThat(out).contains("결과 : 0");
+        });
+    }
 
     @Test
     void 예외_테스트() {
