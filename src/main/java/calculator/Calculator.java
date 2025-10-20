@@ -3,13 +3,13 @@ package calculator;
 import java.util.Stack;
 
 public class Calculator {
-    
+
     public Stack<String> calculateStack;
-    
+
     public Calculator(Stack<String> calculateStack) {
         this.calculateStack = calculateStack;
     }
-    
+
     public int calculate() {
         int sum = 0;
         int index = 0;
@@ -20,7 +20,7 @@ public class Calculator {
         }
         return sum;
     }
-    
+
     private int calculate(String token, int index) {
         int value = 0;
         if (index % 2 == 0 && !token.isBlank()) {
@@ -28,5 +28,5 @@ public class Calculator {
         }
         return value;
     }
-    
+
 }

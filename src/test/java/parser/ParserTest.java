@@ -7,7 +7,7 @@ import java.util.Stack;
 import org.junit.jupiter.api.Test;
 
 public class ParserTest {
-    
+
     @Test
     void 통합_파싱_테스트() {
         Parser parser = new Parser(new Line(null, "1,2:3"));
@@ -19,5 +19,5 @@ public class ParserTest {
         testStack.push("3");
         assertThat(parser.getCalculateStack()).isEqualTo(testStack);
     }
-    
+
 }
